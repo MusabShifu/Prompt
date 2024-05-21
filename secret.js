@@ -1,6 +1,6 @@
 // api/secret.js
 export default (req, res) => {
-    const allowedOrigin = 'https://MusabShifu.github.io'; // Replace with your GitHub Pages URL
+    const allowedOrigin = 'https://musabshifu.github.io'; // Replace with your GitHub Pages URL
     const requestOrigin = req.headers.origin;
 
     // Set CORS headers
