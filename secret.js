@@ -1,9 +1,20 @@
 // api/secret.js
 export default (req, res) => {
-    // Check the origin of the incoming request
     const allowedOrigin = 'https://MusabShifu.github.io'; // Replace with your GitHub Pages URL
     const requestOrigin = req.headers.origin;
 
+    // Set CORS headers
+    res.setHeader('Access-Control-Allow-Origin', allowedOrigin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    // Handle preflight requests
+    if (req.method === 'OPTIONS') {
+        res.status(200).end();
+        return;
+    }
+
+    // Check the origin of the incoming request
     if (requestOrigin !== allowedOrigin) {
         return res.status(403).json({ error: 'Forbidden' });
     }
